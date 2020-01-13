@@ -34,14 +34,14 @@ class UserStatisticsView(APIView):
             until = today
         return since, until
 
-    def get(self, request, id):
+    def get(self, request, pk):
         query_params_serializer = s.UserStaristicsQueryParamsSerializer(
             data=request.query_params)
         if not query_params_serializer.is_valid():
             return Response({'errors': query_params_serializer.errors})
         validated_data = query_params_serializer.validated_data
         since, until = self.get_dates_from_valid_data(validated_data)
-        statistics = m.UserStatistics.filter_by_user(id).filter(
+        statistics = m.UserStatistics.filter_by_user(pk).filter(
             date__gte=since, date__lte=until).order_by('date')
         serializer = s.UserStatisticsSerializer(statistics, many=True)
         return Response({"user": serializer.data})

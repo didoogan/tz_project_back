@@ -6,6 +6,6 @@ app_name = "back"
 
 urlpatterns = [
     url(r'^users/$', UsersView.as_view()),
-    url(r'^users/(?P<id>\d+)/$', UserStatisticsView.as_view()),
+    url(r'^users/(?P<pk>\d+)/$', UserStatisticsView.as_view()),
 ]
 
