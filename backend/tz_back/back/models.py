@@ -42,3 +42,7 @@ class UserStatistics(RepresentableMixin, models.Model):
 
     def __str__(self):
         return f'{super().__str__()} {self.date}'
+
+    @classmethod
+    def filter_by_user(cls, user_id):
+        return cls.objects.filter(user_id=user_id)

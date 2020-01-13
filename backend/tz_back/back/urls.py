@@ -5,7 +5,7 @@ from .views import UserStatisticsView, UsersView
 app_name = "back"
 
 urlpatterns = [
-    url(r'^users/', UsersView.as_view()),
-    url(r'^user/:id', UserStatisticsView.as_view()),
+    url(r'^users/$', UsersView.as_view()),
+    url(r'^users/(?P<id>\d+)/$', UserStatisticsView.as_view()),
 ]
 

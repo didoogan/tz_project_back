@@ -28,9 +28,10 @@ class Command(BaseCommand):
             statistics = self.str_to_list(f.read())
             for stat in statistics:
                 instance, created = model.objects.get_or_create(**stat)
-                verb = 'created' if created else 'updated'
+                verb = 'created' if created else 'received'
                 self.stdout.write(self.style.SUCCESS(
-                    f'{instance} {instance.id} successfully {verb}'))
+                    f'{instance} {instance.id} successfully {verb}')
+                )
 
     def handle(self, *args, **options):
         self.fill_up_db(m.User, self.USER_JSON_FILE_NAME)

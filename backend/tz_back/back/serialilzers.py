@@ -5,7 +5,6 @@ from back import models as m
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     total_clicks = serializers.SerializerMethodField()
     total_page_views = serializers.SerializerMethodField()
 
@@ -28,3 +27,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_total_page_views(self, obj):
         return self.aggregate_field(obj, 'page_views')
+
+
+class UserStatisticsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = m.UserStatistics
+        fields = ('id', 'date', 'page_views', 'clicks')
+
+
+class UserStaristicsQueryParamsSerializer(serializers.Serializer):
+    since = serializers.DateField(required=False)
+    until = serializers.DateField(required=False)
