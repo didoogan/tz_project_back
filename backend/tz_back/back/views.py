@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response

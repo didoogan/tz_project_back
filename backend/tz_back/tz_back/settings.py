@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'backend.tz_back.back.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'tz_back.urls'
@@ -128,3 +129,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 TODAY_DATE = datetime.today().date()
+
+SITE_IP = '35.193.242.180'
